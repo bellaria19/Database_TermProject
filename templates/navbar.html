@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'pybo:index' %}">Pybo</a>
+        <a class="navbar-brand" href="{% url 'rentcar:home' %}">CNU</a>
         <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent"
@@ -13,16 +13,23 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     {% if user.is_authenticated %}
-                        <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
+                        <a class="nav-link" href="{% url 'users:logout' %}">{{ user.username }} (로그아웃)</a>
                     {% else %}
-                        <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
+                        <a class="nav-link" href="{% url 'users:login' %}">로그인</a>
                     {% endif %}
                 </li>
                 <li>
                     {% if not user.is_authenticated %}
-                        <a class="nav-link" href="{% url 'common:signup' %}">회원가입</a>
+                        <a class="nav-link" href="{% url 'users:signup' %}">회원가입</a>
                     {% endif %}
                 </li>
+                <li>
+                    <a class="nav-link" href="{% url 'users:signup' %}">예약</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'users:signup' %}">내역확인</a>
+                </li>
+
             </ul>
         </div>
     </div>
