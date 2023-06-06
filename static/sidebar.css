@@ -299,7 +299,7 @@ html.scroll_hidden body {
 
 .pc_wrap .sidebar > .inner.scroll_p {
     position: sticky;
-    top: 121px;
+    top: 150px;
 }
 
 .pc_wrap #sideScroll.type {
