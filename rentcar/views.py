@@ -5,5 +5,4 @@ from django.utils import timezone
 
 
 def home(request):
-    #page = request.GET.get('page', '1')  # 페이지
     return render(request, 'rentcar/home.html')
