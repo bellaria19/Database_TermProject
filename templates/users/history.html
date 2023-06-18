@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div>
+            {% if current %}
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th><b>차량 번호</b></th>
+                        <th><b>차종</b></th>
+                        <th><b>시작 날짜</b></th>
+                        <th><b>종료 날짜</b></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for rental in current %}
+                        <tr>
+                            <td>{{ rental.licensePlateNo }}</td>
+                            <td>{{ rental.modelName }}</td>
+                            <td>{{ rental.dateRented }}</td>
+                            <td>{{ rental.dateReturned }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No rental history available.</p>
+            {% endif %}
+        </div>
+        <div>
+            {% if prev %}
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th><b>차량 번호</b></th>
+                        <th><b>빌려간 날짜</b></th>
+                        <th><b>반납한 날짜</b></th>
+                        <th><b>비용</b></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for rental in prev %}
+                        <tr>
+                            <td>{{ rental.licensePlateNo }}</td>
+                            <td>{{ rental.dateRented }}</td>
+                            <td>{{ rental.dateReturned }}</td>
+                            <td>{{ rental.payment }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No rental history available.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

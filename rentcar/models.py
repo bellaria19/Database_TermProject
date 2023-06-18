@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 
 # Create your models here.
@@ -22,6 +23,12 @@ class RentCar(models.Model):
     dateRented = models.DateField(blank=True, null=True)
     dateDue = models.DateField(blank=True, null=True)
     cno = models.ForeignKey('users.User', on_delete=models.SET_NULL, blank=True, null=True)
+
+    class Meta:
+        ordering = ['licensePlateNo']
+
+    def __str__(self):
+        return self.licensePlateNo
 
 
 # primary_key = PlateNo, startDate

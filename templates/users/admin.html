@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><b>차량 번호</b></th>
+                <th><b>차량</b></th>
+                <th><b>빌려간 날짜</b></th>
+                <th><b>반납 날짜</b></th>
+                <th><b>유저</b></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for a in current %}
+                <tr>
+                    <td>{{ a.licensePlateNo }}</td>
+                    <td>{{ a.modelName.modelName }}</td>
+                    <td>{{ a.dateRented }}</td>
+                    <td>{{ a.dateDue }}</td>
+                    <td>{{ a.cno }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <label>조인/함수</label>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><b>이름</b></th>
+                <th><b>회원 번호</b></th>
+                <th><b>모델</b></th>
+                <th><b>금액</b></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for j in join %}
+                <tr>
+                    <td>{{ j.name }}</td>
+                    <td>{{ j.username }}</td>
+                    <td>{{ j.modelName }}</td>
+                    <td>{{ j.payment }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <label>그룹 함수</label>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><b>차량</b></th>
+                <th><b>차종</b></th>
+                <th><b>총 차량수</b></th>
+                <th><b>대표 차종</b></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for g in group %}
+                <tr>
+                    <td>{{ g.modelName }}</td>
+                    <td>{{ g.vehicleType }}</td>
+                    <td>{{ g.total }}</td>
+                    <td>{{ g.first }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+        <label>윈도우 함수</label>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><b>차종</b></th>
+                <th><b>차량 번호</b></th>
+                <th><b>대여중</b></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for w in window %}
+                <tr>
+                    <td>{{ w.modelName }}</td>
+                    <td>{{ w.licensePlateNo }}</td>
+                    <td>{{ w.is_rent }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

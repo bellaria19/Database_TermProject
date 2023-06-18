@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% include "sidebar.html" %}
 {% block content %}
     <div id="root" style="height: 100%">
         <div class="pc_wrap" style="">
@@ -373,6 +372,29 @@
                                             </a>
                                         </li>
                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <link rel="stylesheet" href="{% static 'sidebar.css' %}">
+                        <div class="sidebar" style="top:-440px;">
+                            <div class="inner scroll_p">
+                                <div class="res_form">
+                                    <form method="POST" action="{% url 'reservation' %}">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            <label for="dateRented">시작 날짜</label>
+                                            <input type="date" class="form-control" name="dateRented" id="dateRented"
+                                                   value="{{ form.dateRented.value|default_if_none:'' }}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="dateDue">반납 날짜</label>
+                                            <input type="date" class="form-control" name="dateDue"
+                                                   id="dateDue"
+                                                   value="{{ form.dateDue.value|default_if_none:'' }}">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">검색하기</button>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>
